@@ -9,15 +9,18 @@ import (
 
 func main() {
 	// Echo instance
-	e := echo.New()
+	app := echo.New()
 
 	// Middleware
-	e.Use(middleware.Logger())
-	e.Use(middleware.Recover())
+	app.Use(middleware.Logger())
+	app.Use(middleware.Recover())
+
+	// Create groups
+	adminGroup := app.Group("/admin")
 
 	// Routes
-	routes.AddAdminRoutes(e)
+	routes.AddAdminRoutes(adminGroup)
 
 	// Start server
-	e.Logger.Fatal(e.Start(":1323"))
+	app.Logger.Fatal(app.Start(":1323"))
 }
