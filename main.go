@@ -1,9 +1,10 @@
 package main
 
 import (
+	routes "webProject1/routes"
+
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
-	"github.com/vinayakj009/webProject1/routes"
 )
 
 func main() {
@@ -15,7 +16,7 @@ func main() {
 	e.Use(middleware.Recover())
 
 	// Routes
-	routes.AddRoutes(e)
+	routes.AddAdminRoutes(e)
 
 	// Start server
 	e.Logger.Fatal(e.Start(":1323"))
