@@ -1,10 +1,9 @@
 package main
 
 import (
-	routes "webProject1/routes"
-
-	"github.com/labstack/echo/v4"
-	"github.com/labstack/echo/v4/middleware"
+	"github.com/labstack/echo"
+	"github.com/labstack/echo/middleware"
+	"github.com/vinayakj009/webProject1/routes"
 )
 
 func main() {
@@ -17,9 +16,12 @@ func main() {
 
 	// Create groups
 	adminGroup := app.Group("/admin")
+	other := app.Group("/other")
 
 	// Routes
 	routes.AddAdminRoutes(adminGroup)
+	routes.AddAdminRoutes(other)
+	routes.AddAdminRoutes(app)
 
 	// Start server
 	app.Logger.Fatal(app.Start(":1323"))
