@@ -17,9 +17,11 @@ func main() {
 
 	// Create groups
 	adminGroup := app.Group("/user")
+	usersGroup := app.Group("/users")
 
 	// Routes
 	router.AddAdminRoutes(adminGroup)
+	router.AddUsersRoutes(usersGroup)
 
 	// Start server
 	app.Logger.Fatal(app.Start(":1323"))
