@@ -1,7 +1,7 @@
 package main
 
 import (
-	routes "webProject1/routes"
+	router "webProject1/routes"
 
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
@@ -16,10 +16,10 @@ func main() {
 	app.Use(middleware.Recover())
 
 	// Create groups
-	adminGroup := app.Group("/admin")
+	adminGroup := app.Group("/user")
 
 	// Routes
-	routes.AddAdminRoutes(adminGroup)
+	router.AddAdminRoutes(adminGroup)
 
 	// Start server
 	app.Logger.Fatal(app.Start(":1323"))
